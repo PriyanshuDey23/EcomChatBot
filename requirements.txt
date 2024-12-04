@@ -6,5 +6,5 @@ datasets
 pypdf
 python-dotenv
 flask
-
+pandas
 -e .
