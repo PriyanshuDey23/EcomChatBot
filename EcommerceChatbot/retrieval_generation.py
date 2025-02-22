@@ -18,7 +18,7 @@ def generate_product_bot(vectorstore):
     """
 
     # Create a retriever from the vector store
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+    retriever = vectorstore.as_retriever()
 
     # Define the product bot template
     product_bot_template =PROMPT # Imported
@@ -27,7 +27,7 @@ def generate_product_bot(vectorstore):
     prompt = ChatPromptTemplate.from_template(product_bot_template)
 
     # Initialize the LLM
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
+    llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite-preview-02-05")
 
     # Create the product bot chain
     chain = (
@@ -41,7 +41,9 @@ def generate_product_bot(vectorstore):
 
 
 if __name__ == "__main__":
-    # Ingest data into the vector store
+
+
+    # Already Present
     vstore = ingestdata("done")
 
     # Create the product bot chain

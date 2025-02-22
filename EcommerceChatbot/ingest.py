@@ -17,6 +17,7 @@ ASTRA_DB_KEYSPACE=os.getenv("ASTRA_DB_KEYSPACE")
 
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
+# Data ingestion to database
 def ingestdata(status):
     # Config of astra db
     vstore = AstraDBVectorStore(
@@ -34,7 +35,7 @@ def ingestdata(status):
     if storage==None:
         docs=data_converter()
         inserted_ids = vstore.add_documents(docs)
-    # If i have passed ehten it will return
+    # If i have passed the data it will return
     else:
         return vstore
     return vstore, inserted_ids
@@ -42,8 +43,8 @@ def ingestdata(status):
 if __name__=='__main__':
     vstore,inserted_ids=ingestdata(None)
     print(f"\nInserted {len(inserted_ids)} documents.")
-    results = vstore.similarity_search("can you tell me the low budget sound basshead.")  # checking
-    for res in results:
-            print(f"* {res.page_content} [{res.metadata}]")
+    # results = vstore.similarity_search("can you tell me the low budget sound basshead.")  # checking
+    # for res in results:
+    #         print(f"* {res.page_content} [{res.metadata}]")
 
             
