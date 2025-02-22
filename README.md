@@ -1,7 +1,7 @@
 # Ecommerce Chatbot
 
 ![](output.png)
-![](output2.png)
+
 
 
 ## Overview
